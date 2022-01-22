@@ -66,7 +66,13 @@ small {
   top: 25px;
   left: 5px;
 }
-
+.signiture {
+  color: #494949;
+}
 .card-link {
   color: #7a7781;
+}
+.note {
+  position: relative;
+  bottom: 40px;
 }

@@ -1,0 +1,72 @@
+body {
+  background-color: #fffdf6;
+}
+h1,
+h2,
+p {
+  font-family: "Poppins", sans-serif;
+  color: #494949;
+}
+h3,
+h4,
+h5 {
+  font-family: "Nunito", sans-serif;
+}
+h1,
+h2 {
+  font-size: 42px;
+}
+h3 {
+  font-size: 30px;
+}
+h4,
+h5 {
+  font-size: 15px;
+}
+.card-body {
+  color: #fffdf6;
+}
+.row-cols-2 {
+  margin-top: 40px;
+}
+.unit {
+  position: relative;
+  bottom: 20px;
+  font-size: 20px;
+}
+p {
+  font-size: 20px;
+  font-weight: 400;
+}
+.time {
+  padding: 5px 0;
+}
+.row-cols-5 {
+  margin-top: 35px;
+}
+.cloud {
+  color: #faf6e9;
+  text-shadow: #aca4a2 2px 0 2px;
+  font-size: 45px;
+  padding: 5px 0;
+}
+small {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+}
+
+.first-icon,
+.second-icon,
+.third-icon,
+.forth-icon,
+.fifth-icon {
+  padding: 0 32px;
+}
+.card {
+  top: 25px;
+  left: 5px;
+}
+
+.card-link {
+  color: #7a7781;
+}

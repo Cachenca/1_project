@@ -23,10 +23,12 @@ h4,
 h5 {
   font-size: 15px;
 }
+
 .card-body {
   color: #fffdf6;
+  padding: 20px;
 }
-.row-cols-2 {
+.row-cols-3 {
   margin-top: 40px;
 }
 .unit {
@@ -62,17 +64,16 @@ small {
 .fifth-icon {
   padding: 0 32px;
 }
-.card {
-  top: 25px;
-  left: 5px;
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+}
+.note {
+  text-align: right;
 }
 .signiture {
   color: #494949;
 }
 .card-link {
   color: #7a7781;
-}
-.note {
-  position: relative;
-  bottom: 40px;
 }

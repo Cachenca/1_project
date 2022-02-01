@@ -30,14 +30,14 @@ searchCity.addEventListener("submit", findCity);
 
 //show temperature from °C to °F and vice versa
 
-/*function celsiusTemp(event) {
+function celsiusTemp(event) {
   event.preventDefault();
   let fahrenheitlink = document.querySelector("#fahrenheitlink");
   let celsiuslink = document.querySelector("#celsiuslink");
   let number = document.querySelector("#number");
   fahrenheitlink.innerHTML = `<strong>°F</strong>`;
   celsiuslink.innerHTML = `°C`;
-  number.innerHTML = `30`;
+  number.innerHTML = `${number}`;
 }
 
 function fahrenheitTemp(event) {
@@ -47,13 +47,13 @@ function fahrenheitTemp(event) {
   let number = document.querySelector("#number");
   celsiusLink.innerHTML = `<strong>°C</strong>`;
   fahrenheitLink.innerHTML = `°F`;
-  number.innerHTML = `${number}`;
+  number.innerHTML = `(9/5*${number}) + 32`;
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheitlink");
 let celsiusLink = document.querySelector("#celsiuslink");
 fahrenheitLink.addEventListener("click", celsiusTemp);
-celsiusLink.addEventListener("click", fahrenheitTemp); */
+celsiusLink.addEventListener("click", fahrenheitTemp);
 
 //show current temperature figure
 

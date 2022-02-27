@@ -17,18 +17,6 @@ if (minutes < 10) {
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${day} ${hours}:${minutes}`;
 
-//add a search engine, when searching for a city, display the city name on the page after the user submits the form
-function findCity(event) {
-  event.preventDefault();
-  let inputCity = document.querySelector("#search-place");
-  let h1 = document.querySelector("h1");
-  let city = `${inputCity.value}`;
-  h1.innerHTML = `${city}`;
-}
-
-let searchCity = document.querySelector("#search-form");
-searchCity.addEventListener("submit", findCity);
-
 function showWeather(response) {
   //console.log(response.data);
   let showTemperature = document.querySelector("#temp-figure");
@@ -41,7 +29,7 @@ function showWeather(response) {
 
   showTemperature.innerHTML = Math.round(celsiusTemperature);
   showWind.innerHTML = Math.round(response.data.wind.speed);
-  showDescription.innerHTML = Math.round(response.data.weather[0].main);
+  showDescription.innerHTML = response.data.weather[0].main;
   currentCity.innerHTML = response.data.name;
   iconElement.setAttribute(
     "src",
@@ -49,6 +37,30 @@ function showWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
+function searchPlace(event) {
+  event.preventDefault();
+  let inputCity = document.querySelector("#search-place");
+  let units = "metric";
+  let apiKey = "ae7b151a80386287b28d384dcf5b14f4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showWeather);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-place");
+  searchPlace(city.value);
+}
+function searchLocation(position) {
+  var apiKey = "ae7b151a80386287b28d384dcf5b14f4";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat="
+    .concat(position.coords.latitude, "&lon=")
+    .concat(position.coords.longitude, "&appid=")
+    .concat(apiKey, "&units=metric");
+  axios.get(apiUrl).then(showWeather);
+}
+let currentLocationButton = document.querySelector("#gps");
+currentLocationButton.addEventListener("click", getCurrentLocation);
 
 //show temperature from °C to °F and vice versa
 function fahrenheitTemp(event) {
@@ -79,21 +91,25 @@ fahrenheitLink.addEventListener("click", fahrenheitTemp);
 let celsiusLink = document.querySelector("#celsiuslink");
 celsiusLink.addEventListener("click", celsiusTemp);
 
-function finCity(event) {
+searchPlace("Budapest");
+
+//add a search engine, when searching for a city, display the city name on the page after the user submits the form
+function findCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#search-place");
-  let units = "metric";
-  let apiKey = "ae7b151a80386287b28d384dcf5b14f4";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${apiKey}&units=${units}`;
-
-  axios.get(apiUrl).then(showWeather);
+  let h1 = document.querySelector("h1");
+  let city = `${inputCity.value}`;
+  h1.innerHTML = `${city}`;
 }
 
-let newCity = document.querySelector("#search-form");
-newCity.addEventListener("submit", finCity);
+let searchCity = document.querySelector("#search-form");
+searchCity.addEventListener("submit", findCity);
+
+//let newCity = document.querySelector("#search-form");
+//newCity.addEventListener("submit", finCity);
 
 // Current location
-function displayWeatherCondition(response) {
+/*function displayWeatherCondition(response) {
   document.querySelector("#reported-place").innerHTML = response.data.name;
   document.querySelector("#temp-figure").innerHTML = Math.round(
     response.data.main.temp
@@ -103,36 +119,16 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
-}
+} */
 
-function searcCity(city) {
+function searchPlace(city) {
   var apiKey = "ae7b151a80386287b28d384dcf5b14f4";
   var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="
     .concat(city, "&appid=")
     .concat(apiKey, "&units=metric");
-  axios.get(apiUrl).then(displayWeatherCondition);
+  axios.get(apiUrl).then(showWeather);
 }
-
-function handleSubmit(event) {
-  event.preventDefault();
-  var city = document.querySelector("#search-place").value;
-  searcCity(city);
-}
-
-function searchLocation(position) {
-  var apiKey = "ae7b151a80386287b28d384dcf5b14f4";
-  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat="
-    .concat(position.coords.latitude, "&lon=")
-    .concat(position.coords.longitude, "&appid=")
-    .concat(apiKey, "&units=metric");
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-
-var currentLocationButton = document.querySelector("#gps");
-currentLocationButton.addEventListener("click", getCurrentLocation);
-searcCity("Budapest");

@@ -23,6 +23,7 @@ h4,
 h5 {
   font-size: 15px;
 }
+
 .container {
   max-width: max-content;
   margin: 50px auto;
@@ -80,14 +81,11 @@ small {
 .main-icon {
   padding-right: 60px;
 }
-
-.unit.active {
+.active {
   color: #494949;
   cursor: default;
-}
-.unit.active:hover {
   text-decoration: none;
 }
-h3 {
-  color: red;
+.unit {
+  text-decoration: none;
 }

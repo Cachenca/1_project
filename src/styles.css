@@ -26,7 +26,7 @@ h5 {
 
 .container {
   max-width: max-content;
-  margin: 50px auto;
+  margin: 80px auto 0px;
 }
 .card-body {
   color: #fffdf6;
@@ -70,7 +70,9 @@ small {
 }
 
 .note {
+  width: 750px;
   text-align: right;
+  margin: 0 auto;
 }
 .signiture {
   color: #494949;
@@ -86,6 +88,31 @@ small {
   cursor: default;
   text-decoration: none;
 }
-.unit {
+.unit:hover {
   text-decoration: none;
+}
+.weather-forecast-date,
+.weather-forecast-temperature-max {
+  color: #494949;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+}
+
+.weather-forecast-temperature-min {
+  color: #7a7781;
+}
+.weather-forecast {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.weather-forecast-date {
+  position: relative;
+  bottom: -20px;
+  font-size: 18px;
+}
+.weather-forecast-temperature-min,
+.weather-forecast-temperature-max {
+  position: relative;
+  bottom: 10px;
 }
